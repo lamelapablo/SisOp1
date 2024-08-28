@@ -22,9 +22,11 @@ class MyThread(threading.Thread):
         super(MyThread, self).__init__()
         self.name=f"Thread-{numthread}"
         self.cantNum = cantNum
+        self.numthread=numthread
 
     def run(self):
         self.saveListToFile(self.generateList())
+        self.mostrarCantElementProcesados()
 
     def generateList(self):
         ls = [i*i for i in range(self.cantNum)]
@@ -35,6 +37,9 @@ class MyThread(threading.Thread):
             for num in ls:
                 file.write(f'{num}\n')
 
+    def mostrarCantElementProcesados(self):
+        print(f"El thread {self.numthread} ha procesado {self.cantNum} elementos.")
+
 
 def main():
 
@@ -44,20 +49,22 @@ def main():
     print("INICIO del Proceso\n",end="")
     print("....................")
 
-    t0 = MyThread(0, cantidadNums)
-    t1 = MyThread(1, cantidadNums)
-    t2 = MyThread(2, cantidadNums)
+    t0 = MyThread(0, 10)
+    t1 = MyThread(1, 20)
+    t2 = MyThread(2, 30)
 
     t0.start()
-    t1.start()
-    t2.start()
-
     t0.join()
+
+    t1.start()
     t1.join()
+
+    t2.start()
     t2.join()
 
     print("....................")
     print("FIN del Proceso\n",end="-"*20)
+    print()
 
 if __name__ == "__main__":
     main()

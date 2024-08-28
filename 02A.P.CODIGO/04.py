@@ -24,6 +24,9 @@ def main():
     # Iniciar el hilo demonio
     background_thread.start()
 
+
+    time.sleep(5)
+
     # El hilo principal continúa y finaliza
     print("Hilo principal terminado\n",end="")
 
