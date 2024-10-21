@@ -32,7 +32,7 @@ chart = MermaidDiagram(
     links=family_links
 )
 
-#print(chart)
+print(chart)
 #* * * * * * * * * * * *  * * * * *  * * * * * * 
 sequence = Graph('Sequence-diagram',"""
 stateDiagram-v2

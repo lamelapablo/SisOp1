@@ -82,7 +82,7 @@ def main():
     producer.join()
     consumer.join()
 
-    print("Producción y consumo han finalizado.",end="")
+    print("Producción y consumo han finalizado.\n",end="")
 
 if __name__ == "__main__":
     main()

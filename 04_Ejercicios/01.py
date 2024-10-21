@@ -21,7 +21,7 @@ class Usuario(threading.Thread):
     def __init__(self, nombre, caja_de_ahorro, monto):
         super().__init__()
         self.__nombre = nombre
-        self.__caja_de_ahorro = caja_de_ahorro
+        self.__caja_de_ahorro: CajaDeAhorro = caja_de_ahorro
         self.__monto = monto
     
     def __depositar_dinero(self):
