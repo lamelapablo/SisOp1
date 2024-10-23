@@ -35,12 +35,12 @@ class Consumer(threading.Thread):
             time.sleep(random.uniform(0.5, 1.5))
 
 def main():
-    semaphore = threading.Condition()
+    condition: threading.Condition = threading.Condition()
     mensajes: list[str] = []
     max_items = 5
     
-    producer: Producer = Producer(mensajes, semaphore, max_items)
-    consumer: Consumer = Consumer(mensajes, semaphore, max_items)
+    producer: Producer = Producer(mensajes, condition, max_items)
+    consumer: Consumer = Consumer(mensajes, condition, max_items)
 
     producer.start()
     consumer.start()

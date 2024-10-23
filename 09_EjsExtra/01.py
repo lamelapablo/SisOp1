@@ -55,7 +55,7 @@ class Cliente(threading.Thread):
         if reservas_realizadas == 0:
             print(f"{self.__nombre} no encontro asientos disponibles\n", end="")
 
-        print(f"{self.__nombre} ha terminado de reservar")
+        print(f"{self.__nombre} ha terminado de reservar\n\n", end="")
 
     def run(self):
         self.__semaforo.acquire()
@@ -67,10 +67,10 @@ class Cliente(threading.Thread):
 def main():
     semaforo = threading.Semaphore(3)
 
-    avion: Avion = Avion(30)
-    clientes: list[Cliente] = []
-    for i in range(5):
-        clientes.append(Cliente(f"Cliente {i+1}", avion, i+10, semaforo))
+    avion: Avion = Avion(10)
+    clientes: list[Cliente] = [Cliente(f"Cliente {i+1}", avion, 3, semaforo) for i in range(5)]
+    # for i in range(5):
+    #     clientes.append(Cliente(f"Cliente {i+1}", avion, i+10, semaforo))
     
     for cliente in clientes:
         cliente.start()
